@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.vcxproj", "{A452AB0E-026D-4FB4-A6A3-9487CFA2D4DF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Quantum", "Quantum\Quantum.vcxproj", "{D62F116A-127B-433E-A5FF-14F74D97E72E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D62F116A-127B-433E-A5FF-14F74D97E72E}.Debug|x64.ActiveCfg = Debug|x64
+		{D62F116A-127B-433E-A5FF-14F74D97E72E}.Debug|x64.Build.0 = Debug|x64
+		{D62F116A-127B-433E-A5FF-14F74D97E72E}.Release|x64.ActiveCfg = Release|x64
+		{D62F116A-127B-433E-A5FF-14F74D97E72E}.Release|x64.Build.0 = Release|x64
+		{A452AB0E-026D-4FB4-A6A3-9487CFA2D4DF}.Debug|x64.ActiveCfg = Debug|x64
+		{A452AB0E-026D-4FB4-A6A3-9487CFA2D4DF}.Debug|x64.Build.0 = Debug|x64
+		{A452AB0E-026D-4FB4-A6A3-9487CFA2D4DF}.Release|x64.ActiveCfg = Release|x64
+		{A452AB0E-026D-4FB4-A6A3-9487CFA2D4DF}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2CAB6376-C934-4651-8522-A3BEB5764ED4}
+	EndGlobalSection
+EndGlobal
