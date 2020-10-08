@@ -4,6 +4,9 @@
     <Filter Include="Quantum">
       <UniqueIdentifier>{90FFF176-FCDE-7012-05F7-FBE87155D773}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Quantum\Events">
+      <UniqueIdentifier>{74895A61-6057-4E67-49EB-BE8D35582ACC}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Quantum.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Quantum\EntryPoint.h">
       <Filter>Quantum</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Quantum\Events\ApplicationEvent.h">
+      <Filter>Quantum\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Quantum\Events\Event.h">
+      <Filter>Quantum\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Quantum\Events\KeyEvent.h">
+      <Filter>Quantum\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Quantum\Events\MouseEvent.h">
+      <Filter>Quantum\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Quantum\Log.h">
       <Filter>Quantum</Filter>

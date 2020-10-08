@@ -5,6 +5,7 @@
 #include "Core.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
+#include "spdlog/fmt/ostr.h"
 
 namespace Quantum {
 
@@ -28,7 +29,7 @@ namespace Quantum {
 #define QU_CORE_ERROR(...)    ::Quantum::Log::GetCoreLogger()->error(__VA_ARGS__)
 #define QU_CORE_CRITICAL(...) ::Quantum::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
-// Client log marcos :D
+// Client log macros
 #define QU_TRACE(...)    ::Quantum::Log::GetClientLogger()->trace(__VA_ARGS__)
 #define QU_INFO(...)     ::Quantum::Log::GetClientLogger()->info(__VA_ARGS__)
 #define QU_WARN(...)     ::Quantum::Log::GetClientLogger()->warn(__VA_ARGS__)

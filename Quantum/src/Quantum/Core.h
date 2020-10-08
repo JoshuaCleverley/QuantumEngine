@@ -9,3 +9,5 @@
 #else
 	#error Quantum only supports Windows OS
 #endif
+
+#define BIT(x) (1 << x)
