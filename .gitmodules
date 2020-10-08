@@ -1,3 +1,6 @@
 [submodule "Quantum/vendor/spdlog"]
 	path = Quantum/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Quantum/vendor/GLFW"]
+	path = Quantum/vendor/GLFW
+	url = https://github.com/TheCherno/glfw

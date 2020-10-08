@@ -10,6 +10,14 @@ workspace "Quantum"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Quantum/vendor/GLFW/include"
+IncludeDir["Glad"] = "Quantum/vendor/Glad/include"
+
+
+include "Quantum/vendor/GLFW"
+include "Quantum/vendor/Glad"
+
 project "Quantum"
 	location "Quantum"
 	kind "SharedLib"
@@ -17,6 +25,9 @@ project "Quantum"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "qupch.h"
+	pchsource "Quantum/src/qupch.cpp"
 
 	files
 	{
@@ -27,7 +38,16 @@ project "Quantum"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
+	}
+
+	links
+	{
+		"GLFW",
+		"Glad",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -38,7 +58,8 @@ project "Quantum"
 		defines
 		{
 			"QU_PLATFORM_WINDOWS",
-			"QU_BUILD_DLL"
+			"QU_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
@@ -48,14 +69,17 @@ project "Quantum"
 
 	filter "configurations:Debug"
 		defines "QU_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "QU_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "QU_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -95,12 +119,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "QU_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "QU_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "QU_DIST"
+		buildoptions "/MD"
 		optimize "On"

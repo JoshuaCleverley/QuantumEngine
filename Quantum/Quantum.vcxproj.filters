@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Quantum">
       <UniqueIdentifier>{90FFF176-FCDE-7012-05F7-FBE87155D773}</UniqueIdentifier>
     </Filter>
@@ -9,6 +15,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Quantum.h" />
     <ClInclude Include="src\Quantum\Application.h">
       <Filter>Quantum</Filter>
@@ -31,16 +40,36 @@
     <ClInclude Include="src\Quantum\Events\MouseEvent.h">
       <Filter>Quantum\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Quantum\Layer.h">
+      <Filter>Quantum</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Quantum\LayerStack.h">
+      <Filter>Quantum</Filter>
+    </ClInclude>
     <ClInclude Include="src\Quantum\Log.h">
       <Filter>Quantum</Filter>
     </ClInclude>
+    <ClInclude Include="src\Quantum\Window.h">
+      <Filter>Quantum</Filter>
+    </ClInclude>
+    <ClInclude Include="src\qupch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Quantum\Application.cpp">
+      <Filter>Quantum</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Quantum\Layer.cpp">
+      <Filter>Quantum</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Quantum\LayerStack.cpp">
       <Filter>Quantum</Filter>
     </ClCompile>
     <ClCompile Include="src\Quantum\Log.cpp">
       <Filter>Quantum</Filter>
     </ClCompile>
+    <ClCompile Include="src\qupch.cpp" />
   </ItemGroup>
 </Project>
