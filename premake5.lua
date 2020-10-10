@@ -1,7 +1,6 @@
 workspace "Quantum"
 	architecture "x64"
-
-	
+ 
 	startproject "Sandbox"
 
 	configurations
@@ -18,9 +17,11 @@ IncludeDir["GLFW"] = "Quantum/vendor/GLFW/include"
 IncludeDir["Glad"] = "Quantum/vendor/Glad/include"
 IncludeDir["ImGui"] = "Quantum/vendor/imgui"
 
-include "Quantum/vendor/GLFW"
-include "Quantum/vendor/Glad"
-include "Quantum/vendor/imgui"
+group "Dependencies"
+	include "Quantum/vendor/GLFW"
+	include "Quantum/vendor/Glad"
+	include "Quantum/vendor/imgui"
+group ""
 
 project "Quantum"
 	location "Quantum"
@@ -70,7 +71,7 @@ project "Quantum"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"

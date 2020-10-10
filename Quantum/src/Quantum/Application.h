@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Window.h"
-#include "Quantum/LayerStack.h"
-#include "Quantum/Events/Event.h"
-#include "Quantum/Events/ApplicationEvent.h"
+#include <Quantum/Window.h>
+#include <Quantum/LayerStack.h>
+#include <Quantum/Events/Event.h>
+#include <Quantum/Events/ApplicationEvent.h>
 
 namespace Quantum {
 

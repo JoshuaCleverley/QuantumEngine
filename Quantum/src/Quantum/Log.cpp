@@ -1,5 +1,5 @@
-#include "qupch.h"
-#include "Log.h"
+#include <qupch.h>
+#include <Quantum/Log.h>
 
 namespace Quantum {
 

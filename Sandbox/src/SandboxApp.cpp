@@ -1,4 +1,4 @@
-#include "Quantum.h"
+#include <Quantum.h>
 
 class ExampleLayer : public Quantum::Layer
 {
@@ -9,12 +9,15 @@ public:
 
 	void OnUpdate() override
 	{
-		QU_INFO("ExampleLayer::Update");
+		if (Quantum::Input::IsKeyPressed(QU_KEY_ENTER))
+		{
+			QU_TRACE("Enter key is pressed");
+		}
 	}
 
 	void OnEvent(Quantum::Event& e) override
 	{
-		QU_TRACE("{0}", e);
+		//QU_TRACE("{0}", e);
 	}
 };
 

@@ -1,5 +1,5 @@
-#include "qupch.h"
-#include "Layer.h"
+#include <qupch.h>
+#include <Quantum/Layer.h>
 
 namespace Quantum {
 

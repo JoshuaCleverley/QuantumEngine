@@ -1,8 +1,8 @@
-#include "qupch.h"
-#include "WindowsWindow.h"
-#include <Quantum\Events\ApplicationEvent.h>
-#include <Quantum\Events\MouseEvent.h>
-#include <Quantum\Events\KeyEvent.h>
+#include <qupch.h>
+#include <Platform/Windows/WindowsWindow.h>
+#include <Quantum/Events/ApplicationEvent.h>
+#include <Quantum/Events/MouseEvent.h>
+#include <Quantum/Events/KeyEvent.h>
 #include <glad/glad.h>
 
 

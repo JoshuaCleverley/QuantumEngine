@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Quantum/Core.h"
-#include "Quantum/Events/Event.h"
+#include <Quantum/Core.h>
+#include <Quantum/Events/Event.h>
 
 namespace Quantum {
 

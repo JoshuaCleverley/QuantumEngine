@@ -1,6 +1,6 @@
 #pragma once
 
-#include "qupch.h"
+#include <qupch.h>
 
 #ifdef QU_PLATFORM_WINDOWS
 	#ifdef QU_BUILD_DLL

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Quantum/Core.h"
-#include "Layer.h"
+#include <Quantum/Core.h>
+#include <Quantum/Layer.h>
 
 #include <vector>
 

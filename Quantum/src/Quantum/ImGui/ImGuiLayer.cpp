@@ -1,5 +1,5 @@
-#include "qupch.h"
-#include "ImGuiLayer.h"
+#include <qupch.h>
+#include <Quantum/ImGui/ImGuiLayer.h>
 
 #include <Platform/OpenGL/ImGuiOpenGLRenderer.h>
 #include <imgui.h>

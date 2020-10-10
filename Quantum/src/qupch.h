@@ -13,8 +13,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-// Custom includes
-#include "Quantum/Log.h"
+#include <Quantum/Log.h>
 
 #ifdef QU_PLATFORM_WINDOWS
 	#include <Windows.h>

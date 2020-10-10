@@ -1,5 +1,5 @@
-#include "qupch.h"
-#include "LayerStack.h"
+#include <qupch.h>
+#include <Quantum/LayerStack.h>
 
 namespace Quantum {
 

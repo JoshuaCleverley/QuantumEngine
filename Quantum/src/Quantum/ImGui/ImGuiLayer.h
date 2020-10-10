@@ -1,9 +1,9 @@
 #pragma once
 
 #include <Quantum/Layer.h>
-#include <Quantum\Events\MouseEvent.h>
-#include <Quantum\Events\ApplicationEvent.h>
-#include <Quantum\Events\KeyEvent.h>
+#include <Quantum/Events/MouseEvent.h>
+#include <Quantum/Events/ApplicationEvent.h>
+#include <Quantum/Events/KeyEvent.h>
 
 namespace Quantum {
 

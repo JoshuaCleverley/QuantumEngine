@@ -1,9 +1,9 @@
 #pragma once
 
-#include "qupch.h"
+#include <qupch.h>
 
-#include "Quantum/Core.h"
-#include "Quantum/Events/Event.h"
+#include <Quantum/Core.h>
+#include <Quantum/Events/Event.h>
 
 namespace Quantum {
 
@@ -39,6 +39,8 @@ namespace Quantum {
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSync() const = 0;
+
+		virtual void* GetNativeWindow() const = 0;
 
 		static Window* Create(const WindowProps& props = WindowProps());
 	};
