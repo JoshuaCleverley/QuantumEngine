@@ -16,6 +16,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Quantum/vendor/GLFW/include"
 IncludeDir["Glad"] = "Quantum/vendor/Glad/include"
 IncludeDir["ImGui"] = "Quantum/vendor/imgui"
+IncludeDir["glm"] = "Quantum/vendor/glm"
 
 group "Dependencies"
 	include "Quantum/vendor/GLFW"
@@ -46,7 +47,8 @@ project "Quantum"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -106,7 +108,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Quantum/vendor/spdlog/include",
-		"Quantum/src"
+		"Quantum/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links

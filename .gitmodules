@@ -7,3 +7,6 @@
 [submodule "Quantum/vendor/imgui"]
 	path = Quantum/vendor/imgui
 	url = https://github.com/TheCherno/imgui
+[submodule "Quantum/vendor/glm"]
+	path = Quantum/vendor/glm
+	url = https://github.com/g-truc/glm

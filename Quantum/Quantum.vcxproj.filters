@@ -24,6 +24,9 @@
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -52,6 +55,12 @@
     <ClInclude Include="src\Quantum\ImGui\ImGuiLayer.h">
       <Filter>Quantum\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\Quantum\Input.h">
+      <Filter>Quantum</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Quantum\KeyCodes.h">
+      <Filter>Quantum</Filter>
+    </ClInclude>
     <ClInclude Include="src\Quantum\Layer.h">
       <Filter>Quantum</Filter>
     </ClInclude>
@@ -61,18 +70,20 @@
     <ClInclude Include="src\Quantum\Log.h">
       <Filter>Quantum</Filter>
     </ClInclude>
+    <ClInclude Include="src\Quantum\MouseButtonCodes.h">
+      <Filter>Quantum</Filter>
+    </ClInclude>
     <ClInclude Include="src\Quantum\Window.h">
       <Filter>Quantum</Filter>
     </ClInclude>
     <ClInclude Include="src\qupch.h" />
-    <ClInclude Include="src\Quantum\Input.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
-    <ClInclude Include="src\Quantum\KeyCodes.h" />
-    <ClInclude Include="src\Quantum\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
       <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
@@ -93,6 +104,5 @@
       <Filter>Quantum</Filter>
     </ClCompile>
     <ClCompile Include="src\qupch.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>
