@@ -76,6 +76,13 @@ namespace Quantum {
 				data.EventCallback(event);
 			});
 
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)
+			{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				KeyTypedEvent event(keycode);
+				data.EventCallback(event);
+			});
+
 		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);

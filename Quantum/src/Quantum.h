@@ -5,4 +5,5 @@
 #include "Quantum/Log.h"
 #include "Quantum/Layer.h"
 #include "Quantum/Application.h"
+#include "Quantum/ImGui/ImGuiLayer.h"
 #include "Quantum/EntryPoint.h"

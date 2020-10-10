@@ -12,6 +12,10 @@
 	#error Quantum only supports Windows OS
 #endif
 
+#ifdef QU_DEBUG
+	#define QU_ENABLE_ASSERTS
+#endif
+
 #ifdef QU_ENABLE_ASSERTS
 	#define QU_ASSERT(x, ...)	   { if(!(x)) { QU_ERROR(	  "Assertion Fails: {0}", __VA_ARGS__); __debugbreak(); }}
 	#define QU_CORE_ASSERT(x, ...) { if(!(x)) { QU_CORE_ERROR("Assertion Fails: {0}", __VA_ARGS__); __debugbreak(); }}
@@ -19,5 +23,7 @@
 	#define QU_ASSERT(x, ...)
 	#define QU_CORE_ASSERT(x, ...)
 #endif
+
+#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
 
 #define BIT(x) (1 << x)

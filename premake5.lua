@@ -1,6 +1,9 @@
 workspace "Quantum"
 	architecture "x64"
 
+	
+	startproject "Sandbox"
+
 	configurations
 	{
 		"Debug",
@@ -13,10 +16,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Quantum/vendor/GLFW/include"
 IncludeDir["Glad"] = "Quantum/vendor/Glad/include"
-
+IncludeDir["ImGui"] = "Quantum/vendor/imgui"
 
 include "Quantum/vendor/GLFW"
 include "Quantum/vendor/Glad"
+include "Quantum/vendor/imgui"
 
 project "Quantum"
 	location "Quantum"
@@ -40,14 +44,16 @@ project "Quantum"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
 		"Glad",
-		"opengl32.lib"
+		"opengl32.lib",
+		"ImGui"
 	}
 
 	filter "system:windows"
