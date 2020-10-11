@@ -1,4 +1,5 @@
 #include <Quantum.h>
+#include <imgui/imgui.h>
 
 class ExampleLayer : public Quantum::Layer
 {
@@ -15,6 +16,11 @@ public:
 		}
 	}
 
+	virtual void OnImGuiRender() override
+	{
+		
+	}
+
 	void OnEvent(Quantum::Event& e) override
 	{
 		//QU_TRACE("{0}", e);
@@ -27,7 +33,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Quantum::ImGuiLayer());
 	}
 	~Sandbox()
 	{

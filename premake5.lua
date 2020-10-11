@@ -109,7 +109,8 @@ project "Sandbox"
 	{
 		"Quantum/vendor/spdlog/include",
 		"Quantum/src",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"Quantum/vendor"
 	}
 
 	links
