@@ -1,8 +1,7 @@
 #pragma once
 
 #include <Quantum/Window.h>
-#include <GLFW/glfw3.h>
-
+#include <Quantum/Renderer/RenderingContext.h>
 
 namespace Quantum {
 
@@ -28,6 +27,7 @@ namespace Quantum {
 		virtual void Shutdown();
 
 		GLFWwindow* m_Window;
+		RenderingContext* m_Context;
 
 		struct WindowData
 		{

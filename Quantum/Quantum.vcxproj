@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRenderingContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Quantum.h" />
@@ -157,10 +158,12 @@
     <ClInclude Include="src\Quantum\LayerStack.h" />
     <ClInclude Include="src\Quantum\Log.h" />
     <ClInclude Include="src\Quantum\MouseButtonCodes.h" />
+    <ClInclude Include="src\Quantum\Renderer\RenderingContext.h" />
     <ClInclude Include="src\Quantum\Window.h" />
     <ClInclude Include="src\qupch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRenderingContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Quantum\Application.cpp" />

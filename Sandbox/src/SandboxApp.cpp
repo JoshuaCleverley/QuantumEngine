@@ -18,7 +18,12 @@ public:
 
 	virtual void OnImGuiRender() override
 	{
-		
+		ImGui::Begin("Test");
+		if (ImGui::Button("Click me!"))
+		{
+			QU_INFO("The button was clicked! :)");
+		}
+		ImGui::End();
 	}
 
 	void OnEvent(Quantum::Event& e) override
