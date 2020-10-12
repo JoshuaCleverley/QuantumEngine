@@ -21,12 +21,13 @@ namespace Quantum {
 }
 
 // Core log marcos :D
-#define QU_CORE_TRACE(...)    ::Quantum::Log::GetCoreLogger()->trace(__VA_ARGS__)
-#define QU_CORE_INFO(...)     ::Quantum::Log::GetCoreLogger()->info(__VA_ARGS__)
-#define QU_CORE_WARN(...)     ::Quantum::Log::GetCoreLogger()->warn(__VA_ARGS__)
-#define QU_CORE_ERROR(...)    ::Quantum::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define QU_CORE_CRITICAL(...) ::Quantum::Log::GetCoreLogger()->critical(__VA_ARGS__)
-
+#ifndef QU_IGNORE_CORE_LOGS
+	#define QU_CORE_TRACE(...)    ::Quantum::Log::GetCoreLogger()->trace(__VA_ARGS__)
+	#define QU_CORE_INFO(...)     ::Quantum::Log::GetCoreLogger()->info(__VA_ARGS__)
+	#define QU_CORE_WARN(...)     ::Quantum::Log::GetCoreLogger()->warn(__VA_ARGS__)
+	#define QU_CORE_ERROR(...)    ::Quantum::Log::GetCoreLogger()->error(__VA_ARGS__)
+	#define QU_CORE_CRITICAL(...) ::Quantum::Log::GetCoreLogger()->critical(__VA_ARGS__)
+#endif
 // Client log macros
 #define QU_TRACE(...)    ::Quantum::Log::GetClientLogger()->trace(__VA_ARGS__)
 #define QU_INFO(...)     ::Quantum::Log::GetClientLogger()->info(__VA_ARGS__)

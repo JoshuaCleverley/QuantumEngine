@@ -17,6 +17,12 @@ namespace Quantum {
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		QU_CORE_ASSERT(status, "Failed to initialise Glad!");
+
+		QU_CORE_INFO("OpenGL Graphics Info:");
+		QU_CORE_INFO("     Vendor: {0}", glGetString(GL_VENDOR));
+		QU_CORE_INFO("     Renderer: {0}", glGetString(GL_RENDERER));
+		QU_CORE_INFO("     Version: {0}", glGetString(GL_VERSION));
+
 	}
 	void OpenGLRenderingContext::SwapBuffers()
 	{

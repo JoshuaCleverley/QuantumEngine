@@ -25,14 +25,16 @@ namespace Quantum {
 		static Application& Get() { return *s_Instance;  }
 		inline Window& GetWindow() const { return *m_Window; }
 	private:
-		static Application* s_Instance;
-
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+
+		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+	private:
+		static Application* s_Instance;
 	};
 
 	// To be defined in client

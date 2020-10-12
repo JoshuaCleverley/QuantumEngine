@@ -8,7 +8,7 @@ int main(int argc, char** argv)
 {
 	Quantum::Log::Init();
 
-	QU_CORE_INFO("Logging initialisation complete");
+	QU_CORE_INFO("Logging initialisation complete.");
 
 
 	auto app = Quantum::CreateApplication();

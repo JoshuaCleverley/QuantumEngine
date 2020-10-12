@@ -21,7 +21,7 @@ public:
 		ImGui::Begin("Test");
 		if (ImGui::Button("Click me!"))
 		{
-			QU_INFO("The button was clicked! :)");
+			QU_TRACE("The button was clicked! :)");
 		}
 		ImGui::End();
 	}
