@@ -73,6 +73,7 @@
     <ClInclude Include="src\qupch.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRenderingContext.h" />
     <ClInclude Include="src\Quantum\Renderer\RenderingContext.h" />
+    <ClInclude Include="src\Quantum\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
@@ -101,5 +102,6 @@
     </ClCompile>
     <ClCompile Include="src\qupch.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRenderingContext.cpp" />
+    <ClCompile Include="src\Quantum\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>

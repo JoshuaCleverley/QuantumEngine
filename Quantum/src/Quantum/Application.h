@@ -7,6 +7,8 @@
 
 #include <Quantum/ImGui/ImGuiLayer.h>
 
+#include <Quantum/Renderer/Shader.h>
+
 namespace Quantum {
 
 	class QUANTUM_API Application
@@ -33,6 +35,7 @@ namespace Quantum {
 		LayerStack m_LayerStack;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 	private:
 		static Application* s_Instance;
 	};

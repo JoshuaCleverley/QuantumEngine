@@ -159,6 +159,7 @@
     <ClInclude Include="src\Quantum\Log.h" />
     <ClInclude Include="src\Quantum\MouseButtonCodes.h" />
     <ClInclude Include="src\Quantum\Renderer\RenderingContext.h" />
+    <ClInclude Include="src\Quantum\Renderer\Shader.h" />
     <ClInclude Include="src\Quantum\Window.h" />
     <ClInclude Include="src\qupch.h" />
   </ItemGroup>
@@ -172,6 +173,7 @@
     <ClCompile Include="src\Quantum\Layer.cpp" />
     <ClCompile Include="src\Quantum\LayerStack.cpp" />
     <ClCompile Include="src\Quantum\Log.cpp" />
+    <ClCompile Include="src\Quantum\Renderer\Shader.cpp" />
     <ClCompile Include="src\qupch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
