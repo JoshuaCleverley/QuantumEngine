@@ -2,7 +2,7 @@
 .vs/
 /bin/
 bin-int/
-/sandbox/imgui.ini/
+Sandbox/imgui.ini/
 
 #Files
 *.user
