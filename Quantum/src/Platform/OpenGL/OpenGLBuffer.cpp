@@ -15,7 +15,7 @@ namespace Quantum {
 		glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
 	}
 
-	OpenGLVertexBuffer::~OpenGLVertexBuffer()
+	OpenGLVertexBuffer::~OpenGLVertexBuffer() 
 	{
 		glDeleteBuffers(1, &m_RendererID);
 	}
