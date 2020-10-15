@@ -8,6 +8,7 @@
 #include <Quantum/ImGui/ImGuiLayer.h>
 
 #include <Quantum/Renderer/Shader.h>
+#include <Quantum/Renderer/Buffer.h>
 
 namespace Quantum {
 
@@ -24,7 +25,7 @@ namespace Quantum {
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 
-		static Application& Get() { return *s_Instance;  }
+		static Application& Get() { return *s_Instance;  } 
 		inline Window& GetWindow() const { return *m_Window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
@@ -34,8 +35,10 @@ namespace Quantum {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		unsigned int m_VertexArray;
 		std::unique_ptr<Shader> m_Shader;
+		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		std::unique_ptr<IndexBuffer> m_IndexBuffer;
 	private:
 		static Application* s_Instance;
 	};

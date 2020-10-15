@@ -58,7 +58,7 @@ namespace Quantum {
 
 	void ImGuiLayer::OnImGuiRender()
 	{
-		static bool show = true;
+		//static bool show = true;
 		//ImGui::ShowDemoWindow(&show);
 	}
 

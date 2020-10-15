@@ -21,8 +21,8 @@
 #endif
 
 #ifdef QU_ENABLE_ASSERTS
-	#define QU_ASSERT(x, ...)	   { if(!(x)) { QU_ERROR(	  "Assertion Fails: {0}", __VA_ARGS__); __debugbreak(); }}
-	#define QU_CORE_ASSERT(x, ...) { if(!(x)) { QU_CORE_ERROR("Assertion Fails: {0}", __VA_ARGS__); __debugbreak(); }}
+	#define QU_ASSERT(x, ...)	   { if(!(x)) { QU_CRITICAL(	  "Assertion Fails: {0}", __VA_ARGS__); __debugbreak(); }}
+	#define QU_CORE_ASSERT(x, ...) { if(!(x)) { QU_CORE_CRITICAL("Assertion Fails: {0}", __VA_ARGS__); __debugbreak(); }}
 #else
 	#define QU_ASSERT(x, ...)
 	#define QU_CORE_ASSERT(x, ...)
