@@ -7,29 +7,7 @@ namespace Quantum {
 
 	Application* Application::s_Instance = nullptr;
 
-	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
-	{
-		switch (type)
-		{
-			case ShaderDataType::Float:     return GL_FLOAT;
-			case ShaderDataType::Float2:    return GL_FLOAT;
-			case ShaderDataType::Float3:    return GL_FLOAT;
-			case ShaderDataType::Float4:    return GL_FLOAT;
-
-			case ShaderDataType::Mat3:		return GL_FLOAT;
-			case ShaderDataType::Mat4:		return GL_FLOAT;
-
-			case ShaderDataType::Int:		return GL_INT;
-			case ShaderDataType::Int2:		return GL_INT;
-			case ShaderDataType::Int3:		return GL_INT;
-			case ShaderDataType::Int4:	    return GL_INT;
-
-			case ShaderDataType::Bool:		return GL_BOOL;
-		}
-
-		QU_CORE_ASSERT(false, "Unknown ShaderDataType");
-		return 0;
-	}
+	
 
 	Application::Application()
 	{
@@ -43,44 +21,27 @@ namespace Quantum {
 		PushOverlay(m_ImGuiLayer);
 
 		// Trainagle
-		glGenVertexArrays(1, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);
 
 		float vertices[3 * 7] = {
-			-0.5f, -0.5f, 0.0f, 0.8359f, 0.0078f, 0.4375f, 1.0f,
-			 0.5f, -0.5f, 0.0f, 0.6055f, 0.3086f, 0.5859f, 1.0f,
-			 0.0f,  0.5f, 0.0f, 0.0000f, 0.2188f, 0.6563f, 1.0f
+			/* Position */ -0.3f, -0.7f, 0.0f, /* Colour */ 0.8359f, 0.0078f, 0.4375f, 1.0f,
+			/* Position */  0.5f, -0.5f, 0.0f, /* Colour */ 0.6055f, 0.3086f, 0.5859f, 1.0f,
+			/* Position */  0.0f,  0.5f, 0.0f, /* Colour */ 0.0000f, 0.2188f, 0.6563f, 1.0f
 		};
+		
+		m_VertexArray.reset(VertexArray::Create());
 
-		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-
-		{
-			BufferLayout layout = {
-				{ ShaderDataType::Float3, "a_Position" },
-				{ ShaderDataType::Float4, "a_Colour", }
-			};
-			m_VertexBuffer->SetLayout(layout);
-		}
-
-		uint32_t index = 0;
-		const auto& layout = m_VertexBuffer->GetLayout();
-		for (const auto& element : layout)
-		{
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(
-				index, 
-				element.GetComponentCount(), 
-				ShaderDataTypeToOpenGLBaseType(element.Type), 
-				element.Normalised ? GL_TRUE : GL_FALSE, 
-				layout.GetStride(), 
-				(const void*)element.Offset
-			);
-			index++;
-		}
+		std::shared_ptr<VertexBuffer> vertexBuffer;
+		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+		vertexBuffer->SetLayout({
+			{ ShaderDataType::Float3, "a_Position" },
+			{ ShaderDataType::Float4, "a_Colour", }
+		});
+		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[1 * 3] = { 0, 1, 2 };
-
-		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		std::shared_ptr<IndexBuffer> indexBuffer;
+		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		std::string vertexSource = R"(
 			#version 330 core
@@ -147,14 +108,13 @@ namespace Quantum {
 
 		while (m_Running)
 		{
-			m_Shader->Bind();
 
 			glClearColor(0.1f, 0.1f, .1f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
-			// Triangles
-			glBindVertexArray(m_VertexArray);
-			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+			m_Shader->Bind();
+			m_VertexArray->Bind();
+			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();

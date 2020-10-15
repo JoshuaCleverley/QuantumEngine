@@ -17,7 +17,8 @@ namespace Quantum {
 		case RendererAPI::OpenGL:	return new OpenGLVertexBuffer(vertices, size);
 		}
 
-		QU_CORE_ASSERT(false, "Unknown RendererAPI.")
+		QU_CORE_ASSERT(false, "Unknown RendererAPI.");
+		return nullptr;
 	}
 
 	/////////////////////////////////////////////////////////////////////////
@@ -32,7 +33,8 @@ namespace Quantum {
 		case RendererAPI::OpenGL:	return new OpenGLIndexBuffer(indices, size);
 		}
 
-		QU_CORE_ASSERT(false, "Unknown RendererAPI.")
+		QU_CORE_ASSERT(false, "Unknown RendererAPI.");
+		return nullptr;
 	}
 
 }
