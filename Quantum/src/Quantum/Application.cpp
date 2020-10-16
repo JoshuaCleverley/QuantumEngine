@@ -1,7 +1,10 @@
 #include <qupch.h>
+
 #include <Quantum/Application.h>
-#include <glad/glad.h>
+#include <Quantum/Renderer/Renderer.h>
+
 #include <Quantum/Input.h>
+
 
 namespace Quantum {
 
@@ -21,7 +24,6 @@ namespace Quantum {
 		PushOverlay(m_ImGuiLayer);
 
 		// Trainagle
-
 		float vertices[3 * 7] = {
 			/* Position */ -0.3f, -0.7f, 0.0f, /* Colour */ 0.8359f, 0.0078f, 0.4375f, 1.0f,
 			/* Position */  0.5f, -0.5f, 0.0f, /* Colour */ 0.6055f, 0.3086f, 0.5859f, 1.0f,
@@ -57,7 +59,7 @@ namespace Quantum {
 				v_Colour = a_Colour;
 			}
 		)";
-
+		
 		std::string fragmentSource = R"(
 			#version 330 core
 			
@@ -108,13 +110,15 @@ namespace Quantum {
 
 		while (m_Running)
 		{
+			RenderCommand::SetClearColor({ 0.1f, 0.1f, .1f, 1 });
+			RenderCommand::Clear();
 
-			glClearColor(0.1f, 0.1f, .1f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
-
-			m_Shader->Bind();
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::BeginScene();
+			{
+				m_Shader->Bind();
+				Renderer::Submit(m_VertexArray);
+			}
+			Renderer::EndScene();
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();

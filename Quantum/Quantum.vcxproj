@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRenderingContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
@@ -161,7 +162,9 @@
     <ClInclude Include="src\Quantum\Log.h" />
     <ClInclude Include="src\Quantum\MouseButtonCodes.h" />
     <ClInclude Include="src\Quantum\Renderer\Buffer.h" />
+    <ClInclude Include="src\Quantum\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Quantum\Renderer\Renderer.h" />
+    <ClInclude Include="src\Quantum\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Quantum\Renderer\RenderingContext.h" />
     <ClInclude Include="src\Quantum\Renderer\Shader.h" />
     <ClInclude Include="src\Quantum\Renderer\VertexArray.h" />
@@ -170,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRenderingContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
@@ -181,7 +185,9 @@
     <ClCompile Include="src\Quantum\LayerStack.cpp" />
     <ClCompile Include="src\Quantum\Log.cpp" />
     <ClCompile Include="src\Quantum\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Quantum\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Quantum\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Quantum\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Quantum\Renderer\Shader.cpp" />
     <ClCompile Include="src\Quantum\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\qupch.cpp">
