@@ -5,12 +5,9 @@
 #include <Quantum/Events/Event.h>
 #include <Quantum/Events/ApplicationEvent.h>
 
-#include <Quantum/ImGui/ImGuiLayer.h>
+#include <Quantum/Core/Timestep.h>
 
-#include <Quantum/Renderer/Shader.h>
-#include <Quantum/Renderer/Buffer.h>
-#include <Quantum/Renderer/VertexArray.h>
-#include <Quantum/Renderer/OrthographicCamera.h>
+#include <Quantum/ImGui/ImGuiLayer.h>
 
 namespace Quantum {
 
@@ -32,12 +29,13 @@ namespace Quantum {
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 	private:
-		static Application* s_Instance;
-	private:
 		std::unique_ptr<Window> m_Window;
 		LayerStack m_LayerStack;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
+		float m_LastFrameTime = 0.0f;
+	private:
+		static Application* s_Instance;
 	};
 
 	// To be defined in client

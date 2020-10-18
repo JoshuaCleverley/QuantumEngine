@@ -150,6 +150,7 @@
     <ClInclude Include="src\Quantum\Application.h" />
     <ClInclude Include="src\Quantum\Colors.h" />
     <ClInclude Include="src\Quantum\Core.h" />
+    <ClInclude Include="src\Quantum\Core\Timestep.h" />
     <ClInclude Include="src\Quantum\EntryPoint.h" />
     <ClInclude Include="src\Quantum\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Quantum\Events\Event.h" />

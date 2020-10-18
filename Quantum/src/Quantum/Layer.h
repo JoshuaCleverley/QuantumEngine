@@ -2,10 +2,11 @@
 
 #include <Quantum/Core.h>
 #include <Quantum/Events/Event.h>
+#include <Quantum/Core/Timestep.h>
 
 namespace Quantum {
 
-	class QUANTUM_API Layer
+	class Layer
 	{
 	public:
 		Layer(const std::string& name = "Layer");
@@ -13,7 +14,7 @@ namespace Quantum {
 
 		virtual void OnAttatch() {}
 		virtual void OnDetatch() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

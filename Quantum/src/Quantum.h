@@ -5,10 +5,12 @@
 
 #include <Quantum/Application.h>
 
-#include <Quantum/Log.h>
-
 #include <Quantum/Layer.h>
 #include <Quantum/ImGui/ImGuiLayer.h>
+
+#include <Quantum/Log.h>
+
+#include <Quantum/Core/Timestep.h>
 
 #include <Quantum/Input.h>
 #include <Quantum/KeyCodes.h>
