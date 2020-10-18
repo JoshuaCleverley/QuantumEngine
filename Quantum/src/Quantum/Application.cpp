@@ -1,11 +1,11 @@
 #include <qupch.h>
 
 #include <Quantum/Application.h>
+
 #include <Quantum/Renderer/Renderer.h>
-
 #include <Quantum/Input.h>
-
-
+#include <Quantum/KeyCodes.h>
+#include <Quantum/Colors.h>
 namespace Quantum {
 
 	Application* Application::s_Instance = nullptr;
@@ -13,6 +13,7 @@ namespace Quantum {
 	
 
 	Application::Application()
+		: m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		QU_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
@@ -23,11 +24,12 @@ namespace Quantum {
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 
-		// Trainagle
-		float vertices[3 * 7] = {
-			/* Position */ -0.3f, -0.7f, 0.0f, /* Colour */ 0.8359f, 0.0078f, 0.4375f, 1.0f,
-			/* Position */  0.5f, -0.5f, 0.0f, /* Colour */ 0.6055f, 0.3086f, 0.5859f, 1.0f,
-			/* Position */  0.0f,  0.5f, 0.0f, /* Colour */ 0.0000f, 0.2188f, 0.6563f, 1.0f
+		// Triangle
+		float vertices[4 * 7] = {
+			/* Position */ -0.7f,  0.7f, 0.0f, /* Colour */ QU_COL_PURPLE, 1.0f,
+			/* Position */  0.7f,  0.7f, 0.0f, /* Colour */ QU_COL_MAROON, 1.0f,
+			/* Position */  0.7f, -0.7f, 0.0f, /* Colour */ QU_COL_OLIVE, 1.0f,
+			/* Position */ -0.7f, -0.7f, 0.0f, /* Colour */ QU_COL_CYAN, 1.0f,
 		};
 		
 		m_VertexArray.reset(VertexArray::Create());
@@ -40,7 +42,7 @@ namespace Quantum {
 		});
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
-		uint32_t indices[1 * 3] = { 0, 1, 2 };
+		uint32_t indices[2 * 3] = { 0, 1, 2, 2, 3, 0 };
 		std::shared_ptr<IndexBuffer> indexBuffer;
 		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
@@ -51,11 +53,13 @@ namespace Quantum {
 			layout(location = 0) in vec3 a_Position;
 			layout(location = 1) in vec4 a_Colour;
 
+			uniform mat4 u_ViewProjection;
+
 			out vec4 v_Colour;
 
 			void main()
 			{
-				gl_Position = vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
 				v_Colour = a_Colour;
 			}
 		)";
@@ -110,16 +114,37 @@ namespace Quantum {
 
 		while (m_Running)
 		{
-			RenderCommand::SetClearColor({ 0.1f, 0.1f, .1f, 1 });
+			// Camera move code
+			float speed = 0.05f;
+			glm::vec2 move = glm::vec2();
+			if (Input::IsKeyPressed(QU_KEY_LEFT)) {
+				move.x -= speed;
+			}
+			if (Input::IsKeyPressed(QU_KEY_RIGHT)) {
+				move.x += speed;
+			}
+			if (Input::IsKeyPressed(QU_KEY_UP)) {
+				move.y += speed;
+			}
+			if (Input::IsKeyPressed(QU_KEY_DOWN)) {
+				move.y -= speed;
+			}
+			glm::vec3 position = m_Camera.GetPosition();
+			position.x += move.x;
+			position.y += move.y;
+			m_Camera.SetPosition(position);
+
+			// Renderer 
+			RenderCommand::SetClearColor({ QU_COL_GREY, 1.0f });
 			RenderCommand::Clear();
 
-			Renderer::BeginScene();
+			Renderer::BeginScene(m_Camera);
 			{
-				m_Shader->Bind();
-				Renderer::Submit(m_VertexArray);
+				Renderer::Submit(m_Shader, m_VertexArray);
 			}
 			Renderer::EndScene();
 
+			// Layers
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 

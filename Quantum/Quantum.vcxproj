@@ -148,6 +148,7 @@
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Quantum.h" />
     <ClInclude Include="src\Quantum\Application.h" />
+    <ClInclude Include="src\Quantum\Colors.h" />
     <ClInclude Include="src\Quantum\Core.h" />
     <ClInclude Include="src\Quantum\EntryPoint.h" />
     <ClInclude Include="src\Quantum\Events\ApplicationEvent.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="src\Quantum\Log.h" />
     <ClInclude Include="src\Quantum\MouseButtonCodes.h" />
     <ClInclude Include="src\Quantum\Renderer\Buffer.h" />
+    <ClInclude Include="src\Quantum\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Quantum\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Quantum\Renderer\Renderer.h" />
     <ClInclude Include="src\Quantum\Renderer\RendererAPI.h" />
@@ -185,6 +187,7 @@
     <ClCompile Include="src\Quantum\LayerStack.cpp" />
     <ClCompile Include="src\Quantum\Log.cpp" />
     <ClCompile Include="src\Quantum\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Quantum\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Quantum\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Quantum\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Quantum\Renderer\RendererAPI.cpp" />

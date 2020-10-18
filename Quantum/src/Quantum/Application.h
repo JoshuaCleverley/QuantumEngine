@@ -9,7 +9,8 @@
 
 #include <Quantum/Renderer/Shader.h>
 #include <Quantum/Renderer/Buffer.h>
-#include <Quantum\Renderer\VertexArray.h>
+#include <Quantum/Renderer/VertexArray.h>
+#include <Quantum/Renderer/OrthographicCamera.h>
 
 namespace Quantum {
 
@@ -38,6 +39,8 @@ namespace Quantum {
 
 		std::shared_ptr<Shader> m_Shader;
 		std::shared_ptr<VertexArray> m_VertexArray;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};
