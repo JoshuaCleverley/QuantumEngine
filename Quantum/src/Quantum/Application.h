@@ -31,18 +31,13 @@ namespace Quantum {
 		inline Window& GetWindow() const { return *m_Window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-
-		std::unique_ptr<Window> m_Window;
-		ImGuiLayer* m_ImGuiLayer;
-		bool m_Running = true;
-		LayerStack m_LayerStack;
-
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
+	private:
+		std::unique_ptr<Window> m_Window;
+		LayerStack m_LayerStack;
+		ImGuiLayer* m_ImGuiLayer;
+		bool m_Running = true;
 	};
 
 	// To be defined in client

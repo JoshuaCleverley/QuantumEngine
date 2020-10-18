@@ -7,6 +7,7 @@ namespace Quantum {
 	class OrthographicCamera
 	{
 	public:
+		OrthographicCamera() {}
 		OrthographicCamera(float left, float right, float bottom, float top, float zNear = -1.0f, float zFar = 1.0f);
 
 		void SetPosition(const glm::vec3& position) { m_Position = position; RecalculateViewMatrix(); }
