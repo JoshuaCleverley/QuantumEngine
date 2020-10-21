@@ -1,18 +1,20 @@
 #include <Quantum.h>
 #include <imgui/imgui.h>
 #include <glm/ext/matrix_transform.hpp>
+#include <Platform/OpenGL/OpenGLShader.h>
+#include <glm\gtc\type_ptr.hpp>
 
 class ExampleLayer : public Quantum::Layer
 {
 public:
 	ExampleLayer() 
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_SquarePosition(1.0f)
+		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f) 
 	{
-		float vertices[4 * 7] = {
-			/* Position */ -0.5f,  0.5f, 0.0f, /* Colour */ QU_COL_PURPLE, 1.0f,
-			/* Position */  0.5f,  0.5f, 0.0f, /* Colour */ QU_COL_MAROON, 1.0f,
-			/* Position */  0.5f, -0.5f, 0.0f, /* Colour */ QU_COL_OLIVE, 1.0f,
-			/* Position */ -0.5f, -0.5f, 0.0f, /* Colour */ QU_COL_CYAN, 1.0f,
+		float vertices[4 * 3] = {
+			/* Position */ -0.5f,  0.5f, 0.0f,
+			/* Position */  0.5f,  0.5f, 0.0f,
+			/* Position */  0.5f, -0.5f, 0.0f,
+			/* Position */ -0.5f, -0.5f, 0.0f,
 		};
 
 		m_SquareVertexArray.reset(Quantum::VertexArray::Create());
@@ -21,8 +23,7 @@ public:
 		vertexBuffer.reset(Quantum::VertexBuffer::Create(vertices, sizeof(vertices)));
 		vertexBuffer->SetLayout({
 			{ Quantum::ShaderDataType::Float3, "a_Position" },
-			{ Quantum::ShaderDataType::Float4, "a_Colour", }
-			});
+		});
 		m_SquareVertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[2 * 3] = { 0, 1, 2, 2, 3, 0 };
@@ -30,38 +31,34 @@ public:
 		indexBuffer.reset(Quantum::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_SquareVertexArray->SetIndexBuffer(indexBuffer);
 
-		std::string vertexSource = R"(
+		std::string flatColorVertexShaderSource = R"(
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec4 a_Colour;
 
 			uniform mat4 u_ViewProjection;
 			uniform mat4 u_Transform;
 
-			out vec4 v_Colour;
-
 			void main()
 			{
 				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
-				v_Colour = a_Colour;
 			}
 		)";
 
-		std::string fragmentSource = R"(
+		std::string flatColorFragmentShaderSource = R"(
 			#version 330 core
 			
 			layout(location = 0) out vec4 color;
 
-			in vec4 v_Colour;
+			uniform vec3 u_Color;
 
 			void main()
 			{
-				color = v_Colour;
+				color = vec4(u_Color, 1.0f);
 			}
 		)";
 
-		m_SquareShader.reset(new Quantum::Shader(vertexSource, fragmentSource));
+		m_FlatColorShader.reset(Quantum::Shader::CreateShader(flatColorVertexShaderSource, flatColorFragmentShaderSource));
 	}
 
 	void OnUpdate(Quantum::Timestep ts) override
@@ -89,23 +86,23 @@ public:
 
 		Quantum::Renderer::BeginScene(m_Camera);
 		{
-			//Quantum::Renderer::Submit(m_SquareShader, m_SquareVertexArray, squareTransform);
-			glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
-			for (int y = 0; y < 20; y++)
-			{
-				for (int x = 0; x < 20; x++)
-				{
-					glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
-					glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-					Quantum::Renderer::Submit(m_SquareShader, m_SquareVertexArray, transform);
-				}
-			}
+
+			std::dynamic_pointer_cast<Quantum::OpenGLShader>(m_FlatColorShader)->Bind();
+			std::dynamic_pointer_cast<Quantum::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+
+			glm::mat4 transform(1.0f);
+			Quantum::Renderer::Submit(m_FlatColorShader, m_SquareVertexArray, transform);
 		}
 		Quantum::Renderer::EndScene();
 	}
 
 	virtual void OnImGuiRender() override
 	{
+		ImGui::Begin("Settings");
+
+		ImGui::ColorEdit3("Square Colour", glm::value_ptr(m_SquareColor));
+		
+		ImGui::End();
 	}
 
 	void OnEvent(Quantum::Event& e) override
@@ -113,8 +110,10 @@ public:
 	}
 
 private:
-	std::shared_ptr<Quantum::Shader> m_SquareShader;
-	std::shared_ptr<Quantum::VertexArray> m_SquareVertexArray;
+	std::shared_ptr<Quantum::Shader> m_FlatColorShader;
+	std::shared_ptr<Quantum::VertexArray> m_SquareVertexArray; 
+
+	glm::vec3 m_SquareColor = { QU_COL_CYAN };
 
 	Quantum::OrthographicCamera m_Camera;
 	float m_CameraMoveSpeed = 5.0f;

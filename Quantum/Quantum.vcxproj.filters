@@ -85,6 +85,7 @@
     <ClInclude Include="src\Quantum\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Quantum\Colors.h" />
     <ClInclude Include="src\Quantum\Core\Timestep.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
@@ -123,5 +124,6 @@
     <ClCompile Include="src\Quantum\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Quantum\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
   </ItemGroup>
 </Project>
