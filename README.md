@@ -1,4 +1,4 @@
 # QuantumEngine
 A game engine to learn C++.
 
-Heavily inspired by [Hazel](https://github.com/TheCherno/Hazel).
+Basically a clone of [Hazel](https://github.com/TheCherno/Hazel).
